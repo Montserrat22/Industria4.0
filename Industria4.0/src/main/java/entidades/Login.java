@@ -23,5 +23,11 @@ public class Login {
     public void setContraseña(String Contraseña) {
         this.Contraseña = Contraseña;
     }
-    
+    public String process(){
+        if (new LoginValidations().validate(nombreUsuario, contraseña)) {
+        return "/jsf/output.xhtml";    
+        }else{
+             return "/jsf/input.xhtml"; 
+        }
+    }
 }
