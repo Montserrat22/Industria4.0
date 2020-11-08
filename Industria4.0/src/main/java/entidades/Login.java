@@ -25,9 +25,9 @@ public class Login {
     }
     public String process(){
         if (new LoginValidations().validate(nombreUsuario, contraseña)) {
-        return "/jsf/output.xhtml";    
+        return "/jsf/template.xhtml";    
         }else{
-             return "/jsf/input.xhtml"; 
+             return "/jsf/index.xhtml"; 
         }
     }
 }
