@@ -6,7 +6,7 @@ import javax.inject.Named;
 @Named("appLogin")
 public class Login {
     private String nombreUsuario ="ingresa nombre de usuario";
-    private String Contraseña ="ingresa contraseña";
+    private String contraseña ="ingresa contraseña";
 
     public String getNombreUsuario() {
         return nombreUsuario;
@@ -17,11 +17,11 @@ public class Login {
     }
 
     public String getContraseña() {
-        return Contraseña;
+        return contraseña;
     }
 
     public void setContraseña(String Contraseña) {
-        this.Contraseña = Contraseña;
+        this.contraseña = Contraseña;
     }
     public String process(){
         if (new LoginValidations().validate(nombreUsuario, contraseña)) {
