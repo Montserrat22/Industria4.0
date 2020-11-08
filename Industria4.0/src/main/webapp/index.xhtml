@@ -5,41 +5,15 @@
     <h:head>
         <title>Facelet Title</title>
         <h:outputStylesheet name="css/jsfcrud.css"/>
-        <h:outputStylesheet library="cascade" name="bootstrap.min.css"></h:outputStylesheet>
-        <h:outputStylesheet library="cascade" name="login.css"></h:outputStylesheet>
-        <h:outputScript library="js" name="loginJs.js"></h:outputScript>
+        
     </h:head>
-    <h:body onload="inicio()">
-        <div class="row">
-            <div class="col c-margin">
-                <div class="c-padding">
-                    <div class="form-g">
-                        <h:form id="formid">
-                            <h3 style="text-align: center">LOGIN</h3>
-                            <br/>
-                            <h:inputText id="user" class="form-control" onkeyup="validateUser()" value="#{applogin.username}"/>
-                            <h:outputLabel id="lab-user" class="color-label"><small>debe contener almenos 5 caracteres</small></h:outputLabel>
-                                <br/>
-                            <h:inputText id="pass" class="form-control" onkeyup="validatePassword()" value="#{applogin.password}"/>
-                            <h:outputLabel id="lab-pass" class="color-label" ><small>debe contener almenos 5 caracteres</small></h:outputLabel>
-                                <div class="div_rigth">
-                                    <a href="register.xhtml" style="text-align: left;">registrarse</a>
-                                    <br/><br/>
-                                </div>
-                            <h:commandButton id="bt-log" value="#{applogin.tag}" action="#{applogin.logeo}"  class="#{applogin.invalid} btn  btn-block" disabled="false"></h:commandButton>
-                        </h:form>
-                    </div>    
-                </div>    
-            </div>
-            <div class="col c-margin">
-                <div class="c-padding">
-                    <div class="form-message">
-                        <p style="font-size: 60px;"><small>- . -</small></p>
-                        <p style="font-size: 50px; margin-top: -30px;"><strong>Industria 4.0</strong></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <h:body >
+        #{appLogin.nombreUsuario}
+        #{appLogin.contraseña}
+        <h:form>
+        <h:inputText value="#{appLogin.nombreUsuario}" />
+        <h:inputText value="#{appLogin.contraseña}" />
+        </form>
         <br />
         <h:link outcome="/paginas/carro/List" value="Show All Carro Items"/>
         <br />
