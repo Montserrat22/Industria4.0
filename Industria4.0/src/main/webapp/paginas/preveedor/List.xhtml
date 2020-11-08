@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPreveedorTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPreveedorEmpty}" rendered="#{preveedorController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{preveedorController.items.rowCount > 0}">
+                    <h:outputText value="#{preveedorController.pagination.pageFirstItem + 1}..#{preveedorController.pagination.pageLastItem + 1}/#{preveedorController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{preveedorController.previous}" value="#{bundle.Previous} #{preveedorController.pagination.pageSize}" rendered="#{preveedorController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{preveedorController.next}" value="#{bundle.Next} #{preveedorController.pagination.pageSize}" rendered="#{preveedorController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{preveedorController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPreveedorTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPreveedorTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPreveedorTitle_direccion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.direccion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPreveedorTitle_telefono}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.telefono}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPreveedorTitle_correo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.correo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPreveedorTitle_status}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.status}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPreveedorTitle_idDepartamento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idDepartamento}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{preveedorController.prepareView}" value="#{bundle.ListPreveedorViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{preveedorController.prepareEdit}" value="#{bundle.ListPreveedorEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{preveedorController.destroy}" value="#{bundle.ListPreveedorDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{preveedorController.prepareCreate}" value="#{bundle.ListPreveedorCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPreveedorIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
